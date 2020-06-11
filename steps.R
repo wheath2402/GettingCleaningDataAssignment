@@ -23,9 +23,8 @@ Activity <- factor(Activity, levels = c(1, 2, 3, 4, 5, 6),
                                  "WALKING_DOWNSTAIRS", "SITTING", 
                                  "STANDING", "LAYING"))
 
-#subject read and factor
-Subject <- readLines("UCI HAR Dataset/test/subject_test.txt")
-Subject <- factor(Subject)
+#subject read and numeric
+Subject <- as.numeric(readLines("UCI HAR Dataset/test/subject_test.txt"))
 
 #make type
 Type <- rep("TEST", nrow(X_test))
@@ -41,8 +40,7 @@ Activity <- factor(Activity, levels = c(1, 2, 3, 4, 5, 6),
                 labels = c("WALKING", "WALKING_UPSTAIRS", 
                            "WALKING_DOWNSTAIRS", "SITTING", 
                            "STANDING", "LAYING"))
-Subject <- readLines("UCI HAR Dataset/train/subject_train.txt")
-Subject <- factor(Subject)
+Subject <- as.numeric(readLines("UCI HAR Dataset/train/subject_train.txt"))
 Type <- rep("TRAIN", nrow(X_train))
 TrainDF <- cbind(Subject, Activity, Type, X_train)
 ##two dfs TestDF & TrainDF now present
@@ -69,5 +67,6 @@ names(InitialDF) <- UpNames
 ##make second tidy set
 TidyData <- InitialDF %>%
         group_by(Subject, Activity) %>%
-        summarise_all(funs(mean))
+        summarise_all(funs(mean)) %>%
+        arrange(Subject, Activity)
 write.table(TidyData, "TidyData.txt", row.name=FALSE)
