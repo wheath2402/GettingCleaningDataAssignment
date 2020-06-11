@@ -19,3 +19,7 @@ The large initial dataframe is now complete.
 New tidy dataframe is created. Dataframe is grouped by subject and activity. The full dataset is then summarised by mean, and the result is arranged in ascending order of subject. 
 
 New tidy data table is written and saved. 
+
+scripts.R contains scripts to download data and convert all the way to the final tidy dataset.  
+Codebook.MD contains descriptions of variables.
+TidyData.txt contains final tidy data of means by subject and activity.
