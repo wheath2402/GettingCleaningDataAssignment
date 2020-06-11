@@ -62,7 +62,7 @@ UpNames <- gsub("std", "Std", UpNames)
 UpNames <- gsub("^t", "Time.", UpNames)
 UpNames <- gsub("^f", "Freq.", UpNames)
 names(InitialDF) <- UpNames
-
+##initial DF is complete
 
 ##make second tidy set
 TidyData <- InitialDF %>%
