@@ -65,8 +65,9 @@ names(InitialDF) <- UpNames
 ##initial DF is complete
 
 ##make second tidy set
+## group by subject and activity, and then summarise all variables by mean
 TidyData <- InitialDF %>%
         group_by(Subject, Activity) %>%
-        summarise_all(funs(mean)) %>%
+        summarise_all(mean) %>%
         arrange(Subject, Activity)
 write.table(TidyData, "TidyData.txt", row.name=FALSE)
